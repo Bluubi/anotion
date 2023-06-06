@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "lint": "eslint '*/**/*.{js,ts}' --quiet --fix",
     "format": "prettier '*/**' --write",
     "prepare": "husky install"
@@ -39,18 +40,25 @@
     "@angular/cli": "16.0.4",
     "@angular/compiler-cli": "16.0.4",
     "@types/jasmine": "4.0.0",
+    "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "5.59.8",
     "@typescript-eslint/parser": "5.59.8",
     "eslint": "8.41.0",
-    "lint-staged": "13.2.2",
     "eslint-config-prettier": "8.8.0",
     "husky": "8.0.3",
     "jasmine-core": "4.3.0",
-    "karma": "6.4.0",
-    "karma-chrome-launcher": "3.1.0",
-    "karma-coverage": "2.2.0",
-    "karma-jasmine": "5.1.0",
-    "karma-jasmine-html-reporter": "2.0.0",
+    "jest": "^29.5.0",
+    "jest-preset-angular": "^13.1.1",
+    "lint-staged": "13.2.2",
     "typescript": "4.9.5"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "transformIgnorePatterns": [
+      "!node_modules/"
+    ]
   }
 }

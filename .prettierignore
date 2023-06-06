@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all files:
+.angular
+.idea
+.husky
+src/assets/*
+src/favicon.ico

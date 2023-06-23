@@ -1,13 +1,13 @@
-import {Command} from "../command";
+import { Command } from '../command';
 
 export class ButtonInvoker {
   private onClick!: Command;
 
-  setOnClick(command: Command){
+  setOnClick(command: Command) {
     this.onClick = command;
   }
 
-  createNewPage(){
+  createNewPage() {
     this.onClick.execute();
   }
 }

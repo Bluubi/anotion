@@ -1,39 +1,41 @@
-import {TestBed} from '@angular/core/testing';
-import {NewPageActionComponent} from './new-page-action.component';
-import {AnchorComponent} from "../../shared/ui/anchor/anchor.component";
-import {RouterTestingModule} from "@angular/router/testing";
-import {routes} from "../../app-routing.module";
-import {Router} from "@angular/router";
+import { TestBed } from '@angular/core/testing';
+import { NewPageActionComponent } from './new-page-action.component';
+import { AnchorComponent } from '../../shared/ui/anchor/anchor.component';
+import { Router } from '@angular/router';
+import { NewPageFormComponent } from '../new-page-form/new-page-form.component';
 
 describe('NewPageComponent', () => {
   TestBed.configureTestingModule({
-    imports: [NewPageActionComponent, AnchorComponent, RouterTestingModule.withRoutes(routes)],
-  });
+    imports: [NewPageFormComponent, NewPageActionComponent, AnchorComponent],
+  }).compileComponents();
 
   it('should has correct route', () => {
     const { fixture, component } = setup();
 
     fixture.detectChanges();
 
-    expect(component.route).toEqual([{ outlets: { newPage: 'new-page' } } ])
-
-
+    expect(component.route).toEqual([{ outlets: { newPage: 'new-page' } }]);
   });
 
   it('should create new page if user clicks on link', () => {
     const { fixture } = setup();
     const router = TestBed.inject(Router);
 
-    fixture.autoDetectChanges(true);
+    fixture.detectChanges();
 
-    const navigationSpy = jest.spyOn(router, 'navigate');
+    const navigationSpy = jest
+      .spyOn(router, 'navigate')
+      .mockResolvedValue(true);
 
-    const anchor = fixture.debugElement.nativeElement.querySelector('app-anchor > a') as HTMLAnchorElement;
+    const anchor = fixture.debugElement.nativeElement.querySelector(
+      'app-anchor > a'
+    ) as HTMLAnchorElement;
 
     anchor.click();
 
-    expect(navigationSpy).toHaveBeenCalledWith([ { outlets: { newPage: 'new-page'} }], { skipLocationChange: true})
-
+    expect(navigationSpy).toHaveBeenCalledWith([
+      { outlets: { newPage: 'new-page' } },
+    ], { skipLocationChange: true});
   });
 });
 

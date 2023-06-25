@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {AnchorComponent} from "../../shared/ui/anchor/anchor.component";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AnchorComponent } from '../../shared/ui/anchor/anchor.component';
 
 @Component({
   selector: 'app-new-page-action',
@@ -11,5 +11,5 @@ import {AnchorComponent} from "../../shared/ui/anchor/anchor.component";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewPageActionComponent {
-  route = [{ outlets: { newPage: 'new-page'} }];
+  route = [{ outlets: { newPage: 'new-page' } }];
 }

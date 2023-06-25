@@ -21,6 +21,6 @@ export class AnchorComponent {
   @Input() skipLocationChange = false;
 
   async navigate() {
-    await this.router.navigate(this.link);
+    await this.router.navigate(this.link, {skipLocationChange: this.skipLocationChange});
   }
 }

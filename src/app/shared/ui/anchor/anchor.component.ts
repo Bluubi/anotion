@@ -1,6 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {Route, Router} from "@angular/router";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-anchor',
@@ -8,14 +13,14 @@ import {Route, Router} from "@angular/router";
   imports: [CommonModule],
   template: `<a (click)="navigate()"><ng-content></ng-content></a>`,
   styleUrls: ['./anchor.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnchorComponent {
   router = inject(Router);
   @Input('href') link!: any[];
   @Input() skipLocationChange = false;
 
-  async navigate(){
-    await this.router.navigate(this.link)
+  async navigate() {
+    await this.router.navigate(this.link);
   }
 }

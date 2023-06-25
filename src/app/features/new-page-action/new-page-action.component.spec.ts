@@ -33,9 +33,10 @@ describe('NewPageComponent', () => {
 
     anchor.click();
 
-    expect(navigationSpy).toHaveBeenCalledWith([
-      { outlets: { newPage: 'new-page' } },
-    ], { skipLocationChange: true});
+    expect(navigationSpy).toHaveBeenCalledWith(
+      [{ outlets: { newPage: 'new-page' } }],
+      { skipLocationChange: true }
+    );
   });
 });
 
